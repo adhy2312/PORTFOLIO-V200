@@ -14,14 +14,23 @@ export default function FluidCanvas() {
     let rafId;
     const uuid = 'fluid-canvas-1';
 
+    let isTransferred = false;
+
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      if (isTransferred) {
+        // Once transferred, we cannot set canvas.width/height directly.
+        // The worker is responsible for handling dimension updates if needed.
+        pipeline.dispatch('science', 'RESIZE_FLUID', uuid, { width: window.innerWidth, height: window.innerHeight });
+      } else {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
     };
     window.addEventListener('resize', resize);
     resize();
 
     const offscreen = canvas.transferControlToOffscreen();
+    isTransferred = true;
     
     // Send the offscreen canvas to the worker
     pipeline.dispatch('science', 'INIT_FLUID_OFFSCREEN', uuid, { canvas: offscreen }, [offscreen]);
@@ -32,8 +41,8 @@ export default function FluidCanvas() {
       frame++;
       if (frame % 2 === 0) { // Throttle state updates to 60Hz, Worker renders at 144Hz
         pipeline.dispatch('science', 'UPDATE_FLUID_STATE', uuid, {
-          width: canvas.width, 
-          height: canvas.height,
+          width: window.innerWidth, 
+          height: window.innerHeight,
           mouseX: ns.mousePos.x,
           mouseY: ns.mousePos.y,
           velocityX: ns.mousePos.vx || 0,
