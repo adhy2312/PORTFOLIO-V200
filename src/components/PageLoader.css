@@ -1,0 +1,92 @@
+/* ═══════════════════════════
+   PAGE LOADER — CLEAN BOOT SCREEN
+   Zero-lag: no pseudo-element animations, no CRT overlays
+═══════════════════════════ */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary, #ffffff);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.loader-name-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.loader-name-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(3rem, 10vw, 6.5rem);
+  font-weight: 800;
+  color: var(--text-primary, #000);
+  letter-spacing: 6px;
+  line-height: 1;
+  text-shadow: 4px 4px 0px var(--accent-brutal-yellow, #f4d03f);
+  display: inline-block;
+}
+
+.loader-dot {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(3rem, 10vw, 6.5rem);
+  font-weight: 800;
+  color: var(--accent-primary, #6C63FF);
+  line-height: 1;
+  text-shadow: 4px 4px 0px #000;
+}
+
+/* Language label beneath the name */
+.loader-lang-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  background: var(--accent-brutal-yellow, #f4d03f);
+  padding: 4px 12px;
+  border: 2px solid #000;
+  min-height: 1em;
+}
+
+/* Neo-Brutalist loading bar */
+.loader-bar-track {
+  width: 240px;
+  height: 12px;
+  background: #fff;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 4px 4px 0px #000;
+  border: 3px solid #000;
+}
+
+.loader-bar-fill {
+  height: 100%;
+  background: var(--accent-primary, #6C63FF);
+  border-right: 3px solid #000;
+  box-shadow: none;
+  position: relative;
+}
+
+.loader-phrase {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.78rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}

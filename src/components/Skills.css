@@ -1,0 +1,246 @@
+.skills {
+  padding: 10rem 0;
+  background: var(--bg-primary);
+  position: relative;
+  z-index: 1;
+}
+
+.skills-header {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.skills-header .section-divider {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.skills-header .section-desc {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 3rem;
+}
+
+/* ═══════════════════════════════
+   BRUTAL BENTO SKILL CARD
+═══════════════════════════════ */
+.skill-card {
+  background: var(--bg-card);
+  padding: 2.5rem;
+  border-radius: var(--border-radius-bento);
+  border: var(--border-heavy) !important;
+  box-shadow: var(--shadow-brutal-deep) !important;
+  transition: transform var(--transition-bounce), box-shadow var(--transition-bounce) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card:hover {
+  transform: translate(-4px, -4px) !important;
+  box-shadow: 16px 16px 0px #000 !important;
+}
+
+/* ═══════════════════════════════
+   BRUTAL ICON CAPSULE
+═══════════════════════════════ */
+.skill-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.skill-card-icon {
+  font-size: 1.8rem;
+  color: #000;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--accent-brutal-yellow);
+  border: var(--border-brutal);
+  box-shadow: var(--shadow-brutal);
+  position: relative;
+}
+
+.skill-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin: 0;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.skill-bar-item {
+  margin-bottom: 1.8rem;
+}
+
+.skill-bar-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #000;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+
+.skill-bar-percent {
+  font-size: 0.9rem;
+  color: #000;
+  font-weight: 900;
+}
+
+/* ═══════════════════════════════
+   BRUTAL PROGRESS BARS
+═══════════════════════════════ */
+.skill-bar-track {
+  height: 16px;
+  background: #fff;
+  border-radius: 4px;
+  border: var(--border-brutal);
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 4px 4px 0px rgba(0,0,0,0.1);
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: var(--bar-color, var(--accent-brutal-blue));
+  border-right: var(--border-brutal);
+  position: relative;
+}
+
+/* ═══════════════════════════════
+   BRUTAL TOOLS PANEL
+═══════════════════════════════ */
+.tools-section {
+  margin-top: 8rem;
+  text-align: center;
+  background: var(--accent-brutal-pink);
+  padding: 4rem;
+  border-radius: var(--border-radius-bento);
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal-deep);
+  position: relative;
+}
+
+.tools-section::before {
+  content: 'TECH RACK';
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 900;
+  color: #000;
+  background: var(--accent-brutal-yellow);
+  padding: 4px 20px;
+  border: var(--border-brutal);
+  box-shadow: var(--shadow-brutal);
+}
+
+.tools-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 900;
+  text-shadow: 3px 3px 0px #fff;
+}
+
+.tools-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+/* ═══════════════════════════════
+   BRUTAL TOOL CHIPS
+═══════════════════════════════ */
+.tools-chip {
+  padding: 12px 24px;
+  background: #fff;
+  color: #000;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  border: var(--border-brutal);
+  box-shadow: var(--shadow-brutal);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.tools-chip:hover {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0px #000 !important;
+  background: var(--accent-brutal-yellow);
+}
+
+/* Tooltip (Brutalized) */
+.chip-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: #000;
+  border: var(--border-brutal);
+  border-radius: 8px;
+  padding: 12px 20px;
+  min-width: 140px;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-fast);
+  z-index: 100;
+  box-shadow: 8px 8px 0px var(--accent-brutal-blue);
+}
+
+.tools-chip:hover .chip-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.chip-tooltip-title {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.chip-tooltip-desc {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-brutal-yellow);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .chip-tooltip { display: none; }
+  .tools-chip { padding: 8px 16px; font-size: 0.85rem; }
+  .tools-section {
+    padding: 3rem 1.5rem;
+  }
+}

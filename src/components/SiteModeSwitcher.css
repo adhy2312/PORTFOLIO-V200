@@ -1,0 +1,282 @@
+/* ═══════════════════════════════════════════
+   SITE MODE SWITCHER — Floating Panel
+   Premium glass-morphism mode controls
+═══════════════════════════════════════════ */
+
+.site-mode-fab {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 10000;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  background-color: var(--skeuo-carbon-bg);
+  background-image: var(--skeuo-carbon-pattern), var(--skeuo-carbon-gradient);
+  color: #a8a8a8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--skeuo-carbon-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  text-shadow: 0 -1px 1px rgba(0,0,0,1);
+}
+
+.site-mode-fab:hover {
+  transform: translateY(-2px);
+  color: #fff;
+  box-shadow: 
+    0 10px 20px rgba(0,0,0,0.8),
+    0 4px 8px rgba(0,0,0,0.6),
+    inset 0 1px 2px rgba(255,255,255,0.2),
+    inset 0 -2px 4px rgba(0,0,0,0.7);
+}
+
+.site-mode-fab:active {
+  transform: translateY(2px);
+  box-shadow: var(--skeuo-carbon-active);
+}
+
+/* ─── Panel ─── */
+.site-mode-panel {
+  position: fixed;
+  bottom: 84px;
+  left: 24px;
+  z-index: 10000;
+  width: 280px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: rgba(12, 12, 20, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.04);
+  scrollbar-width: none;
+}
+
+.site-mode-panel::-webkit-scrollbar { display: none; }
+
+.smp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.smp-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+}
+
+.smp-badge {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.55rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(124, 58, 237, 0.2);
+  color: var(--accent-primary);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+}
+
+/* ─── Mode Buttons ─── */
+.smp-modes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.smp-mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #1a1a1a;
+  border-radius: 8px;
+  background-color: var(--skeuo-carbon-bg);
+  background-image: var(--skeuo-carbon-pattern), var(--skeuo-carbon-gradient);
+  color: #a8a8a8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.05), inset 0 -1px 2px rgba(0,0,0,0.5);
+}
+
+.smp-mode-btn:hover {
+  background-color: #1a1a1a;
+  border-color: #333;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.1);
+}
+
+.smp-mode-btn.smp-active {
+  background-image: var(--skeuo-carbon-pattern), linear-gradient(180deg, #3a2255 0%, #1a0a2e 100%);
+  border-color: #6a32a8;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.4), inset 0 1px 1px rgba(255,255,255,0.2), inset 0 -2px 4px rgba(0,0,0,0.8);
+}
+
+.smp-mode-btn.smp-active .smp-mode-icon {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.smp-mode-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.25s ease;
+}
+
+.smp-mode-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.smp-mode-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+
+.smp-mode-desc {
+  font-size: 0.6rem;
+  opacity: 0.5;
+  font-family: 'Fira Code', monospace;
+}
+
+/* ─── Divider ─── */
+.smp-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 12px 0;
+}
+
+/* ─── Color Theme Swatches ─── */
+.smp-color-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 2px 0 6px;
+}
+
+.smp-color-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: var(--swatch-color, #000);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.smp-color-swatch:hover {
+  transform: scale(1.15);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.smp-color-swatch.smp-color-active {
+  border-color: #fff;
+  box-shadow: 0 0 0 2px var(--swatch-color, #000), 0 0 12px rgba(255,255,255,0.2);
+  transform: scale(1.1);
+}
+
+/* Default black swatch gets a special cross-hatch to indicate "no color" */
+.smp-color-swatch:first-child {
+  background: linear-gradient(135deg, #111 50%, #444 50%);
+}
+
+.smp-swatch-dot {
+  display: none; /* Visual is handled by the button background */
+}
+
+/* ─── Accessibility Toggles ─── */
+.smp-a11y {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.smp-a11y-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.smp-a11y-btn:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+}
+
+.smp-a11y-btn.smp-a11y-active {
+  color: var(--accent-cyan);
+}
+
+.smp-toggle-dot {
+  margin-left: auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  transition: all 0.25s ease;
+}
+
+.smp-a11y-active .smp-toggle-dot {
+  background: var(--accent-cyan);
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+}
+
+/* ─── Mobile ─── */
+/* ─── Inline Mode ─── */
+.smp-inline {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  width: 100%;
+}
+
+.mobile-menu-settings {
+  padding: 24px;
+  background: rgba(255,255,255,0.02);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  margin-top: auto;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 768px) {
+  /* Hide the FAB entirely on mobile, we use the settings button in the hamburger menu */
+  .site-mode-fab {
+    display: none !important;
+  }
+  .site-mode-panel {
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    width: auto;
+    max-width: none;
+    z-index: 1061; /* Ensure it stays above the mobile hamburger panel */
+  }
+}
